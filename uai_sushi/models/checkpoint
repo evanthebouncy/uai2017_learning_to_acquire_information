@@ -1,0 +1,2 @@
+model_checkpoint_path: "imply_1layer.ckpt"
+all_model_checkpoint_paths: "imply_1layer.ckpt"
