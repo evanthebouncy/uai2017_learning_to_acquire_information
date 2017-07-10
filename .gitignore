@@ -1,0 +1,6 @@
+*.ckpt
+*.stable
+*.pyc
+*.png
+_*
+*.swp

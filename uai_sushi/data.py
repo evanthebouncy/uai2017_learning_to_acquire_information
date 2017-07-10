@@ -8,8 +8,8 @@ from sort_data import *
 
 from numpy.linalg import norm
 
-NOISE = False
-NOISE_PR = 0.0
+NOISE = True
+NOISE_PR = 0.1
 
 L = 10
 

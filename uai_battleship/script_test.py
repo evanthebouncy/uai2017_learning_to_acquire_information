@@ -43,7 +43,7 @@ num_oc = np.array([0.0 for _ in range(L*L)])
 
 iter_num = 0
 
-for test_d in test_data[:3]:
+for test_d in test_data:
   iter_num += 1
   img, _x, _pos = test_d
   qry = mk_query(_x) 

@@ -39,5 +39,5 @@ if model_type == "1layer":
 if model_type == "cnnlayer":
   impnet = Implynet(embed_cnn_layer, "cnnlayer", tf.Session())
 
-train_model(impnet, 20)
+train_model(impnet, 10000)
 

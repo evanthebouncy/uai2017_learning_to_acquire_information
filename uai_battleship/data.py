@@ -8,12 +8,13 @@ from tensorflow.examples.tutorials.mnist import input_data
 from numpy.linalg import norm
 
 L = 10
+NOISE = 0.1
 
 X_L = 10
 N_BATCH = 30
 OBS_SIZE = L * L
 
-KEEP = 0.6
+
 boat_shapes = [(2,4), (1,5), (1,3), (1,3), (1,3)]
 
 # ---------------------------- helpers
@@ -46,16 +47,27 @@ def show_dim(lst1):
       except:
         return type(lst1)
 
+def corrupt(o):
+  if o == [1.0, 0.0]: return [0.0, 1.0]
+  if o == [0.0, 1.0]: return [1.0, 0.0]
+
 # -------------------------------------- making the datas
 
 # assume X is already a 2D matrix
 def mk_query(X):
+  # give a probability of noise corrupting the observation
   def query(O):
-    for xx in X:
-      # print O, xx, dist(xx, O)
-      if dist(xx, O) < 1:
-        return [1.0, 0.0]
-    return [0.0, 1.0]
+    def _query(O):
+      for xx in X:
+        # print O, xx, dist(xx, O)
+        if dist(xx, O) < 1:
+          return [1.0, 0.0]
+      return [0.0, 1.0]
+    o = _query(O)
+    if np.random.random() < NOISE:
+      return corrupt(o)
+    else:
+      return o
   return query
 
 def sample_coord():

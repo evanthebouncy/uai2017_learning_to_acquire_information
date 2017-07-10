@@ -67,7 +67,7 @@ def sortb(arrr):
               # merge xs[h:h + 2 * unit]
               p, q = l, mid
               while p < mid and q < r:
-                  if xs[p] < xs[q]: p += 1
+                  if corrupt(xs[p] < xs[q]): p += 1
                   else:
                       tmp = xs[q]
                       xs[p + 1: q + 1] = xs[p:q]
@@ -90,7 +90,7 @@ def sortc(arrr):
   while not sortedd:
       sortedd = True  # Assume the list is now sortedd
       for element in range(0, len(arrr)-1):
-          if arrr[element] > arrr[element + 1]:
+          if corrupt(arrr[element] > arrr[element + 1]):
               sortedd = False  # We found two elements in the wrong order
               hold = arrr[element + 1]
               arrr[element + 1] = arrr[element]
@@ -99,6 +99,6 @@ def sortc(arrr):
 
   return tracker
 
-trace = sortc([10,1,8,7,6,2,4,3,5,9])
-for tr in trace:
-  print tr
+# trace = sortc([10,1,8,7,6,2,4,3,5,9])
+# for tr in trace:
+#   print tr
